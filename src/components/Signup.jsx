@@ -1,27 +1,30 @@
 export default function Signup() {
-    function handleSubmit(event) {
-        event.preventDefault();
-        const fd = new FormData(event.target);
-        const acquisitionChannel = fd.getAll('acquisition');
-        const data = Object.fromEntries(fd.entries());
-        data.acquisition = acquisitionChannel;
-        console.log(data);
-        
-
-
-    }
+  function handleSubmit(event) {
+    event.preventDefault();
+    const fd = new FormData(event.target);
+    const acquisitionChannel = fd.getAll("acquisition");
+    const data = Object.fromEntries(fd.entries());
+    data.acquisition = acquisitionChannel;
+    console.log(data);
+  }
   return (
     <form onSubmit={handleSubmit}>
       <h2>Welcome on board!</h2>
       <p>We just need a little bit of data from you to get you started🚀</p>
       <div className="control">
         <label htmlFor="email">Email</label>
-        <input id="email" type="email" name="email" />
+        <input id="email" type="email" name="email" required />
       </div>
       <div className="control-row">
         <div className="control">
           <label htmlFor="password">Password</label>
-          <input id="password" type="password" name="password" />
+          <input
+            id="password"
+            type="password"
+            name="password"
+            required
+            minLength={6}
+          />
         </div>
         <div className="control">
           <label htmlFor="confirm-password">Confirm Password</label>
@@ -37,16 +40,16 @@ export default function Signup() {
       <div className="control-row">
         <div className="control">
           <label htmlFor="first-name">First Name</label>
-          <input type="text" id="first-name" name="first-name" />
+          <input type="text" id="first-name" name="first-name" required />
         </div>
         <div className="control">
           <label htmlFor="last-name">Last Name</label>
-          <input type="text" id="last-name" name="last-name" />
+          <input type="text" id="last-name" name="last-name" required />
         </div>
       </div>
       <div className="control">
         <label htmlFor="phone">What best describes your role?</label>
-        <select name="role" id="role">
+        <select name="role" id="role" required>
           <option value="student">Student</option>
           <option value="teacher">Teacher</option>
           <option value="employee">Employee</option>
@@ -82,7 +85,7 @@ export default function Signup() {
       </fieldset>
       <div className="control">
         <label htmlFor="terms-and-conditions" name="terms">
-          <input type="checkbox" id="terms-and-conditions" name="terms" />I
+          <input type="checkbox" id="terms-and-conditions" name="terms" required />I
           agree to the terms and conditions
         </label>
       </div>
